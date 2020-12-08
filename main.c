@@ -38,34 +38,14 @@ pat_t pat_arg[] = {
 
 
 
-
-//TODO mover esto primero
 extern str_tok_t stack[256]; /* assume these are big enough */
 extern str_tok_t queue[256];
 extern int l_queue;
 extern int l_stack;
 
 void qpush(str_tok_t x);
-/*
-void qpush(str_tok_t x) {
-	queue[l_queue++] = x;
-	return x;
-}
-*/
-
 void spush(str_tok_t x);
-/*
-void spush(str_tok_t x) {
-	stack[l_stack++] = x;
-	return x;
-}
-*/
 str_tok_t spop();
-/*
-str_tok_t spop() {
-	return stack[--l_stack];
-}
-*/
 
 
 void display(const char *s)
