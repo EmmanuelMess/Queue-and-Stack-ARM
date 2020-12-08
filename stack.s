@@ -23,9 +23,8 @@ void spush(str_tok_t x) {
 
 .text
 spush:
-
     @ 4-11 callee saved
-    push {r4-r6}
+    push {r4-r11}
 
     ldr r4, =l_stack
     ldr r5, [r4]            @ r5 is len
@@ -41,7 +40,7 @@ spush:
     add r5, r5, #1
     str r5, [r4]
 
-    pop {r4-r6}
+    pop {r4-r11}
     bx lr
 
 /*
@@ -51,8 +50,22 @@ str_tok_t spop() {
 */
 
 spop:
+    @ 4-11 callee saved
+    push {r4-r11}
+
     ldr r4, =l_stack
     ldr r5, [r4]            @ r5 is len
     sub r5, r5, #1
     str r5, [r4]
 
+
+    lsl r5, #4              @ log2(sizeof(str_tok_t)) = 4
+
+    ldr r6, =stack          @ r6 is &stack
+
+    add r6, r6, r5
+    ldm r6, {r1-r4}
+    stm r0, {r1-r4}
+
+    pop {r4-r11}
+    bx lr

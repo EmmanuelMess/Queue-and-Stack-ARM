@@ -186,7 +186,6 @@ int parse(const char *s) {
 }
 
 
-/*
 int main()
 {
 	int i;
@@ -212,9 +211,9 @@ int main()
 
 	return 0;
 }
-*/
+
 /*
-int main() {
+void test_push() {
 	printf("sizeof(str_tok_t) = %ld\n", sizeof(str_tok_t));
 
 	char * a = "a";
@@ -232,4 +231,24 @@ int main() {
 	printf("s: %d == %d\n", stack[1].prec, 5);
 	printf("s: %d == %d\n", stack[1].assoc, -1);
 	printf("length: %d\n", l_stack);
-}*/
+}
+
+int main() {
+	test_push();
+
+	str_tok_t r = spop();
+	printf("s: %c == b\n", *(r.s));
+	printf("s: %d == %d\n", r.len, 4);
+	printf("s: %d == %d\n", r.prec, 5);
+	printf("s: %d == %d\n", r.assoc, -1);
+	printf("length: %d\n", l_stack);
+
+
+	r = spop();
+	printf("s: %c == a\n", *(r.s));
+	printf("s: %d == %d\n", r.len, 1);
+	printf("s: %d == %d\n", r.prec, 2);
+	printf("s: %d == %d\n", r.assoc, 3);
+	printf("length: %d\n", l_stack);
+}
+ */
